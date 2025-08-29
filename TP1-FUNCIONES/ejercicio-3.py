@@ -5,7 +5,7 @@ def control_gastos(viajes: int) -> int:
 
     Pre: como parametros acepta valores enteros iguales o mayores a uno
     
-    Post: Devuelve el total gastado en viajes en ese mes
+    Post: Devuelve el total gastado en viajes en ese mes.
 
     """
 
