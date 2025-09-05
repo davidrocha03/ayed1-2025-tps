@@ -1,45 +1,29 @@
 def mayor_unico(a: int, b: int, c: int) -> int:
     """
-    Recibe 3 nuumeros enteros y devuelve el mayor.
-    Siempre y cuando sea repetido.
-    
-    Pre: los argumentos deben ser numeros enteros
-    
-    post: Retorna el numero mayor si es unico, caso contrario devuelve -1
-    """
-    if a > b: #Este bloque es para evaluar a
-        if a > c:
-            if a == b:
-                return -1
-            if a == c:
-                return -1
-            return a
-    
-    elif b > a:
-        if b > c:
-            if b == a:
-                return -1
-            if b == c:
-                return -1
-            return b
+    Recibe 3 numeros positivos y devuelve el mayor
+    Siempre y cuando sea unico
 
-    elif c > a:
+    Pre: Los argumentos deben ser numero enteros
+    
+    Post: Retorna el mayor de ellos siempre y cuando sa unico, caso contrario retorna -1 
+    
+    """
+    if a > b:
+        if a > c:
+            return a
+        
+    if b > a:
+        if b > c:
+            return b
+    
+    if c > a:
         if c > b:
-            if c == a:
-                return -1
-            if c == b:
-                return -1
             return c
+    
     return -1
 
-
-num1 = int(input("Ingrese primero numero: "))
-num2 = int(input("Ingrese segundo numero: "))
-num3 = int(input("Ingrese tercer numero: "))
-funcion = mayor_unico(num1, num2, num3)
-if funcion != -1:
-    print(f"El maximo hallado es {funcion}")
-else:
-    print("valor unico no existente")
-
-
+a = int(input("INgresa Num 1: "))
+b = int(input("INgresa NUm2: "))
+c = int(input("Ingresa NUm3: "))
+funcion = mayor_unico(a, b, c)
+print(funcion)
