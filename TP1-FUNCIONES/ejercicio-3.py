@@ -28,6 +28,7 @@ while True:
         fun = control_gastos(viajes)
         print(f"Total gastado en el mes es: {fun:.2f}")
     elif viajes == 0:
+        print("Cerrando programa.. :)")
         break
     else:
         print("ERROR. Numero negativo")
