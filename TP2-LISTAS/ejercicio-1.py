@@ -1,76 +1,76 @@
 import random as rn
+import math
 
 
 def cargar_numeros()->list:
     """
-    Carga una lista al azar de 4 digitos
-    Pre: Necesita el modulo random para su funcionamiento
-    Post: retorna la lista generada de numeros al azar
+    La funcion una lista al azar de 4 digitos
+    Pre: No precisa parametros, utiliza el modulo random para su funcionamiento
+    Post: retorna la lista generada de numeros al azar de 4 digitos
     """
-    cantidad = rn.randint(10, 99)
-    lista = [rn.randint(1000, 9999) for _ in range(cantidad)]
-    return lista
+    cantidad = rn.randint(10,99)
 
-def calcular_producto(lista: list) ->int:
+    lista = [rn.randint(1000, 9999)for _ in range(cantidad)]
+    return(lista) 
+
+
+def calcular_producto(lista: list[int]) -> int:
     """
-    Calcula y devuelve el producto de todos los elemtenos de una lista
-    Pre:La lista debe ser de numeros 
-    Post:Retorna el producto de todos los elemtenosd e la lista o 1 si la lista esta vacia
+    La funcion calcula el producto de todos los elementos en una lista de números.
+
+    Pre: La lista contiene solo números (enteros).
+    Post: Retorna el producto de todos los elementos de la lista.
     """
+    #return math.prod(lista) Halla el producto con la libreria math
     producto = 1
+
     for numero in lista:
         producto *= numero
-    return producto 
+    return producto
 
-def eliminar_valor(lista: list, a_eliminar: int) -> None:
+def eliminar_valor(lista: list[int], valor: int) -> list[int]:
     """
-    La funcion elimina todas las apariciones de valor que se a ingresado
+    Elimina todas las apariciones de un valor específico en la lista.
 
-    Pre: La lista debe ser de numeros
-    Post: La funcion debe modificar la lista original y eliminando las coincidencias
+    Pre: La lista debe estar cargada y el valor debe ser un entero 
+    Post: Retorna la lista de enteros, sin los numeros que se ingresó
     """
-    for i in range(len(lista)-1, -1, -1):
-        if lista[i] == a_eliminar:
-            lista.pop(i)
+    while valor in lista:
+        lista.remove(valor)
+    return lista
 
-def es_capicua(lista: list) -> bool:
+
+
+def es_capicua(lista: list[int]) -> bool:
     """
-    La funcnion determina si el contenido de una lista cualquiera es capicua
+    La funcion verifica si la lista es capicúa 
 
-    Pre:La lista puede estar vacia o contener cualquier tipo de dato
-    Post:La funcion retorna True si la lista es capicua y False si no lo es
-    La lista original no es modificada
+    Pre: Debe tener la lista cargada de numeros enteros,
+    Post: Retorna True si es capucúa, caso contrario retorna False
     """
-    izquierda = 0
-    derecha = len(lista) -1
-    while izquierda < derecha:
-        if lista[izquierda] != lista[derecha]:
-            return False
-        izquierda += 1
-        derecha += 1
-    return True
+    return lista == lista[::-1]
 
-if __name__ == "__main__":
-    print("--- Carga de la lista de numeros aleatorios ---")
+
+if __name__ == '__main__':
+    print("Funcion A")
     lista = cargar_numeros()
-    print(f"Lista: {len(lista)} Elementos: {lista}")
+    print(lista)
+    print("-"*20)
+    print("Funcion B")
+    total = calcular_producto(lista)
+    print(total)
+    print("-"*20)
+    print("Funcion C")
+    while True:
+        valor = int(input("Ingrese valor numero a eliminar (-1 Para salir): "))
+        resul = eliminar_valor(lista,valor)
+        print(resul)
+        if valor == -1:
+            break
+    print("-"*20)
+    print("Funcion C")
+    res = es_capicua(lista)
+    print(lista)
+    print(res)
 
-    lista.extend([3345, 9987, 1234])
-    print(f"Lista con duplicados: {lista}")
-
-    print("--- Calculo del produnto ---")
-    producto = calcular_producto(lista)
-    print(f"El producto de cada elemento es: {producto}")
-
-    print("--- Valor eliminados ---")
-    a_eliminar = 3478
-    print(f"Se eliminan estas apariciones {a_eliminar}")
-    eliminar_valor(lista, a_eliminar)
-    print(f"Lista como resultado: {lista}")
-
-    print("--- Verificacion si la lista es capicua ---")
-    print(f"Lista actual es capicua? {lista}")
-    prueba = [16, 90, 88, 88, 11]
-    print(f"Esta lista {prueba} es capicua? {es_capicua(prueba)}")
-    no_capicua = [5, 6, 7]
-    print(f"Lista {no_capicua} es capicua? {es_capicua(no_capicua)}")
+    
