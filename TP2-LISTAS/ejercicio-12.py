@@ -43,7 +43,6 @@ def info_socio(lista: list[tuple]) -> dict[int,int]:
         print(f"Socio: {num[0]} Veces: {valor}")
     return "Resultado exitoso"
 
-
 if __name__ == "__main__":        
     carga = carga_socios()
     print(carga)
