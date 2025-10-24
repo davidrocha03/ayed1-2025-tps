@@ -64,19 +64,73 @@ def intercambiar_columnas(matriz: list[list[int]], n1: int, n2: int) -> list[lis
     """
     for i in range(len(matriz)):
         matriz[i][n1], matriz[i][n2] = matriz[i][n2], matriz[i][n1]
-        return matriz
+    return matriz
 
-# def transponer_matriz():
-#     pass
+def transponer_matriz(matriz: list[list[int]]) -> list[list[int]]:
+    """
+    La funcion Transpone una matriz NxN 
+
+    Pre: La matriz debe estar cargada previamente 
+    Post: Retorna una matriz Transpuesta
+    """
+    n = len(matriz)
+    for i in range(n):
+        for j in range(i + 1, n):
+            matriz[i][j], matriz[j][i] = matriz[j][i], matriz[i][j]
+    return matriz
 
 
-# def calcular_promedio():
-#     pass
+def calcular_promedio(matriz: list[list[int]], indice: int) -> int:
+    """
+    La funcion calcula el promedio de los valores de una columna determinada
+
+    Pre:
+        - La matriz debe estar cargada previamente
+        - El indice debe ser valido (0 <= indice < cantidad de columnas)
+    Post:
+        - Retorna el promedio redondeado de los valores de la columna indicada
+    """
+    col = [fila[indice]for fila in matriz]
+    if not matriz:
+        return 0
+    promedio = sum(col) / len(col)
+    return round(promedio)  
+    
+    
+
+def calcular_porcentaje(matriz: list[list[int]], indice: int) -> float:
+    """
+    La funcion calcula el porcentaje de elementos impares en una columna
+
+    Pre:
+        - La matriz debe estar cargada previamente
+        - El indice debe ser valido (0 <= indice < cantidad de columnas)
+    Post:
+        - Retorna el porcentaje de valores impares respecto al total de la columna
+    """
+    col = [fila[indice]for fila in matriz]
+    if not col:
+        return 0.0
+    imp = [x for x in col if x % 2 != 0]
+    porcentaje = (len(imp) / len(col)) * 100
+    return porcentaje
 
 
-# def es_simetrica_principal():
-#     pass
+def es_simetrica_principal(matriz: list[list[int]]) -> bool:
+    """
+    La funcion verifica si una matriz es simetrica respecto a su diagonal principal
 
+    Pre:
+        - La matriz debe ser cuadrada y estar cargada previamente
+    Post:
+        - Retorna True si la matriz es simetrica, False en caso contrario
+    """  
+    n = len(matriz)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if matriz[i][j] != matriz[j][i]:
+                return False
+    return True
 
 # def es_simetrica_secundaria():
 #     pass
@@ -84,8 +138,6 @@ def intercambiar_columnas(matriz: list[list[int]], n1: int, n2: int) -> list[lis
 
 # def es_palindromos_capicua():
 #     pass
-
-
 if __name__ == "__main__":
     while True:
         n = int(input("Ingresa N: "))
@@ -124,8 +176,26 @@ if __name__ == "__main__":
             if 0 <= v2 < len(b):
                 break
             print("Indice no existente")
-        print("--- FILAS INTERCAMBIADAS ---")
+        print("--- COLUMNAS INTERCAMBIADAS ---")
         col = intercambiar_columnas(b, v1, v2)
         for l in col:
             print(l)
-
+        q = transponer_matriz(b)
+        print("--- MATRIZ TRANSPUESTA ---")
+        for fila in q:
+            print(fila)
+        while True:
+            num = int(input("Ingrese indice de fila: "))
+            if 0 <= num < len(b):
+                break
+            print("Indice no existente")
+        print(f"El promedio es: {calcular_promedio(b,num)}")
+        while True:
+            cp = int(input("Ingrese indice de columna: "))
+            if 0 <= cp < len(b):
+                break
+            print("Indice no existente")
+        print(f"El porcentaje es: {calcular_porcentaje(b, cp)}")
+        if es_simetrica_principal(b) == True:
+            print("Es simetrica")
+        print("No es simetrica")
