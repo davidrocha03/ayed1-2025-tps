@@ -9,10 +9,9 @@ def matriz_aleatoria():
     Post: Retorna una matriz cargada con numeros enteros positivos al cuadrado
     """
     matriz = []
-    n = 3
+    n = rn.randint(2,10)
     numeros = rn.sample(range(0, n**2),n**2)
-    print(numeros)
-    
+    print(n)
     for i in range(n):
         fila = numeros[i*n : (i+1)*n]
         matriz.append(fila)
