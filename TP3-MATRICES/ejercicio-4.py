@@ -13,7 +13,8 @@ def cant_bicis_por_fabrica(matriz: list[list[int]]) -> list[list[int]]:
 
 def fab_mas_produjo(matriz: list[list[int]]):
     dia = len(matriz) 
-    fabrica = len(matriz[0])
+    fabrica = len(matriz[0])  
+
     mayor = matriz[0][0]
     fabrica_dia = [0,0]
 
@@ -36,4 +37,4 @@ def dia_mas_productivo(matriz: list[list[int]]) -> tuple[int,int]:
 
 def menor_comprension(matriz: list[list[int]]) -> list[int]:
     
-    return [min(valor)for valor in matriz]
+    return [min(valor)for valor in matriz] 
