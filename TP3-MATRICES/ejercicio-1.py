@@ -199,3 +199,6 @@ if __name__ == "__main__":
         if es_simetrica_principal(b) == True:
             print("Es simetrica")
         print("No es simetrica")
+
+if __name__ == "__main__":
+    pass
