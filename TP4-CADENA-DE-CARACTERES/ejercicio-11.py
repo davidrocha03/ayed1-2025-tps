@@ -1,4 +1,8 @@
-def contar_subcadena( cadena: str, sub_cadena: str):
+def contar_subcadena(cadena: str, sub_cadena: str) -> int:
+    """
+    Pre: 'cadena' y 'sub_cadena' son cadenas de texto.
+    Post: devuelve la cantidad de veces que 'sub_cadena' aparece dentro de 'cadena', ignorando mayúsculas/minúsculas.
+    """
     contador = 0
     i_sub = 0
     n_cadena = list(cadena.lower())
@@ -9,3 +13,11 @@ def contar_subcadena( cadena: str, sub_cadena: str):
                 contador += 1
                 i_sub = 0
     return contador
+
+
+def main():
+    print(contar_subcadena("Hola hola HoLa", "hola"))
+
+
+if __name__ == "__main__":
+    main()

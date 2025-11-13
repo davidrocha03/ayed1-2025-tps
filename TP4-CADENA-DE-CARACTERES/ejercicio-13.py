@@ -1,18 +1,23 @@
-def numeros_a_letras(num: int):
+def numeros_a_letras(num: int) -> str:
+    """
+    Pre: num debe ser un número entero no negativo.
+    Post: Devuelve el número escrito en palabras en español.
+    """
     unidades = ["", "uno", "dos", "tres", "cuatro", "cinco",
                 "seis", "siete", "ocho", "nueve"]
     decenas = ["", "diez", "veinte", "treinta", "cuarenta",
-                "cincuenta", "sesenta", "setenta", "ochenta", 
-                "noventa"]
+               "cincuenta", "sesenta", "setenta", "ochenta", 
+               "noventa"]
     especiales = ["once", "doce", "trece", "catorce", "quince"]
     centenas = ["", "ciento", "doscientos", "trescientos",
                 "cuatrocientos", "quinientos", "seiscientos",
-                 "setecientos", "ochocientos", "novecientos"]
-
+                "setecientos", "ochocientos", "novecientos"]
     grupos = ["", "mil", "millon", "mil millones", "billon"]
+    
     resul = []
     if num == 0:
         return "cero"
+    
     i = 0
     while num > 0:
         grupo = num % 1000
@@ -26,15 +31,17 @@ def numeros_a_letras(num: int):
             texto = "cien"
         elif c > 0:
             texto += centenas[c] + " "
+        
         if d == 1 and u > 0:
             texto += especiales[u - 1] + " "
         elif d > 1:
             texto += decenas[d]
             if u > 0:
-                texto += " y " + unidades[u] + " "  
+                texto += " y " + unidades[u] + " "
         else:
             if u > 0:
                 texto += unidades[u] + " "
+        
         texto = texto.strip()
         if texto:
             nombre = grupos[i]
@@ -44,6 +51,14 @@ def numeros_a_letras(num: int):
                 texto += " " + nombre
             resul.insert(0, texto)
         i += 1
-    return " ".join(resul).strip()   
 
-print(numeros_a_letras(123456789))
+    return " ".join(resul).strip()
+
+
+def main():
+    numero = 123456789
+    print(numeros_a_letras(numero))
+
+
+if __name__ == "__main__":
+    main()
