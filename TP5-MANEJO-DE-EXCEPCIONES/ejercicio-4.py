@@ -1,4 +1,9 @@
-def interrupcion():
+def interrupcion() -> None:
+    """
+    Pre: no recibe parametros
+    Post: Imprime los números del 1 al 100000.
+          Si el usuario presiona Ctrl-C, solicita confirmación para continuar o detener.
+    """
     i = 1
     while i <= 100000:
         try:
@@ -7,13 +12,15 @@ def interrupcion():
         except KeyboardInterrupt:
             confirmar = input("Desea continuar? (s/n): ")
             if confirmar.lower() == "s":
-                print("continuando..")
+                print("Continuando...")
             else:
-                print("Detenido")
+                print("Detenido por el usuario")
                 break
-            
 
-def main():
+
+def main() -> None:
     interrupcion()
+
+
 if __name__ == "__main__":
     main()
